@@ -18,6 +18,7 @@ function App() {
   //Function append spreadsheet to add row into google sheet
 
   const appendSpreadsheet = async (row) => {
+    console.log(REACT_APP_CLIENT_EMAIL);
     try {
       await doc.useServiceAccountAuth({
         client_email: REACT_APP_CLIENT_EMAIL,
@@ -41,7 +42,7 @@ function App() {
 
   const handleSubmit = (event) =>{
     event.preventDefault()
-    console.log(formData);
+    appendSpreadsheet(formData)
   }
   return (
     <form className="App" onSubmit={handleSubmit}>
